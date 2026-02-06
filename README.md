@@ -26,23 +26,20 @@ Note that this is a practice project, the main focus was on data wrangling and m
 #### 3.1 Predicting imdb score
 
 - Lasso CV for tuning alpha
-<img width="548" height="307" alt="output1" src="https://github.com/user-attachments/assets/cba2f559-3355-466e-b03e-0f03ad751222" />
+
 
 - Feature slection 
-  
-<img width="858" height="649" alt="output2" src="https://github.com/user-attachments/assets/c229083b-3a3f-48aa-9370-3dd4aeece1d4" />
 
-- ### 3.2 Classifing 
+
+- ### 3.2 Classification
 - **3.2.1 Logstic regression classifier**
   
   Confusion matrix:
   
-<img width="509" height="437" alt="output3" src="https://github.com/user-attachments/assets/e295abc5-7ae9-4ff8-ba74-dbea6fdcae52" />
+<img width="219" height="178" alt="image" src="https://github.com/user-attachments/assets/3d58b106-4715-4634-b805-229cbf5d6b9a" />
 
 - **3.2.2 Decision tree model**
-  
- <img width="1696" height="1175" alt="output4" src="https://github.com/user-attachments/assets/00456aa1-6046-4a41-a0bf-8bfd52f66934" />
 
-  Confusion matrix:
-  
-  <img width="509" height="437" alt="output5" src="https://github.com/user-attachments/assets/0099deb1-e3ed-466e-b23d-3341c184d4be" />
+  Confusion matrix: 
+ 
+ <img width="224" height="177" alt="image" src="https://github.com/user-attachments/assets/18cd5654-6e50-41b2-ada6-dd4e00b5dbb3" />
