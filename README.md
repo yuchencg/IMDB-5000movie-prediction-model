@@ -1,4 +1,4 @@
-# IMDB--5000Movie-DataAnalysis--PredictionModel
+# IMDB-5000Movie-Score-Profit-Prediction-Model
 EDA, Data wrangling and predictive models for imdb movies scores and movie profitabilities using Python 
 
 ## Dataset
@@ -27,11 +27,9 @@ Note that this is a practice project, the main focus was on data wrangling and m
 
 - Lasso CV for tuning alpha
 
-
 - Feature slection 
 
-
-- ### 3.2 Classification
+#### 3.2 Classification
 - **3.2.1 Logstic regression classifier**
   
   Confusion matrix:
