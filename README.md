@@ -1,13 +1,13 @@
 # IMDB 5000 Movie Data Analysis -- Prediction Models
 
 Exploratory data analysis, data wrangling, and predictive modeling for IMDb movie scores and movie profitability using Python. This is a practice project focused on data wrangling and methodological implementation.
+Tableau Visualizations at: 
 
 ## Dataset
 
 **Source:** [Kaggle IMDB 5000 Movie Dataset](https://www.kaggle.com/datasets/carolzhangdc/imdb-5000-movie-dataset/data)
 
 - 5,043 movie entries (4,998 after deduplication), 28 columns
-- Covers movies from 1916 to 2016 across 65+ countries
 - Key columns: `imdb_score`, `gross`, `budget`, `director_name`, `genres`, `num_critic_for_reviews`, `content_rating`, `title_year`
 
 ## Methodology
@@ -32,7 +32,7 @@ After dropping duplicates and missing values (5,043 -> 3,722 complete cases), en
 - **Categorical recoding:** `main_genre` (primary genre extracted from multi-genre field), `region` (North America, UK, Europe, East Asia, Other)
 - **Director-level aggregates:** `director_count` (number of movies per director), `director_meanimdb` (mean IMDb score per director)
 
-### 3. Regression -- Predicting IMDb Score
+### 3. Regularized Regression -- Predicting IMDb Score
 
 Used LASSO with cross-validation to tune the regularization parameter and select features.
 
