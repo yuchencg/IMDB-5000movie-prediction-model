@@ -1,43 +1,71 @@
-# IMDB-5000Movie-Score-Profit-Prediction-Model
-EDA, Data wrangling and predictive models for imdb movies scores and movie profitabilities using Python 
+# IMDB 5000 Movie Data Analysis -- Prediction Models
+
+Exploratory data analysis, data wrangling, and predictive modeling for IMDb movie scores and movie profitability using Python. This is a practice project focused on data wrangling and methodological implementation.
 
 ## Dataset
-This project worked on the Kaggle Imdb 5000 Movies Dataset : https://www.kaggle.com/datasets/carolzhangdc/imdb-5000-movie-dataset/data. The dataset includes 4998 movie entires and 28 columns.
 
+**Source:** [Kaggle IMDB 5000 Movie Dataset](https://www.kaggle.com/datasets/carolzhangdc/imdb-5000-movie-dataset/data)
 
-## Description
-The goal of analysis is to build statistical models for 
-1) predicting imdb movies scores,
-2) movie profitabilities (using break-even).
-Note that this is a practice project, the main focus was on data wrangling and methodological implementation.
+- 5,043 movie entries (4,998 after deduplication), 28 columns
+- Covers movies from 1916 to 2016 across 65+ countries
+- Key columns: `imdb_score`, `gross`, `budget`, `director_name`, `genres`, `num_critic_for_reviews`, `content_rating`, `title_year`
 
-## Content
-### 1.Exploratory Data Analysis 
-### 2.Data Cleaning and Transformation 
-- including : variable transformations 
-    -  loggross, logbudget,
-    -  Recoding categorical variables and get dummies
-    -  Creating new variables:  
-        - ‘profited’ : binary variable for whether gross profit >= budget (not economically meaningful, just an indicator)
-        - ‘director_count’: movie count by director
-        - ‘director_meanimdb’ : calculating mean score for movies from the same director
+## Methodology
 
-### 3.Prediction models
-#### 3.1 Predicting imdb score
+### 1. Exploratory Data Analysis
 
-- Lasso CV for tuning alpha
+Distribution analysis of key variables and relationship mapping between budget and gross profit.
 
-- Feature slection 
+| | |
+|---|---|
+| ![Critic Reviews Distribution](images/critic_reviews_distribution.png) | ![Gross Profit Distribution](images/gross_profit_distribution.png) |
+| ![IMDb Score Distribution](images/imdb_score_distribution.png) | ![Movies Per Year](images/movies_per_year.png) |
 
-#### 3.2 Classification
-- **3.2.1 Logstic regression classifier**
-  
-  Confusion matrix:
-  
-<img width="219" height="178" alt="image" src="https://github.com/user-attachments/assets/3d58b106-4715-4634-b805-229cbf5d6b9a" />
+![Budget vs Gross Scatter](images/budget_vs_gross_scatter.png)
 
-- **3.2.2 Decision tree model**
+### 2. Data Cleaning and Feature Engineering
 
-  Confusion matrix: 
- 
- <img width="224" height="177" alt="image" src="https://github.com/user-attachments/assets/18cd5654-6e50-41b2-ada6-dd4e00b5dbb3" />
+After dropping duplicates and missing values (5,043 -> 3,722 complete cases), engineered features include:
+
+- **Log transforms:** `logbudget`, `loggross`
+- **Binary encodings:** `is_colored`, `is_english_film`, `profited` (gross >= budget)
+- **Categorical recoding:** `main_genre` (primary genre extracted from multi-genre field), `region` (North America, UK, Europe, East Asia, Other)
+- **Director-level aggregates:** `director_count` (number of movies per director), `director_meanimdb` (mean IMDb score per director)
+
+### 3. Regression -- Predicting IMDb Score
+
+Used LASSO with cross-validation to tune the regularization parameter and select features.
+
+| LASSO CV: Train vs Test MSE | Feature Importance |
+|---|---|
+| ![LASSO CV MSE](images/lasso_cv_mse.png) | ![LASSO Feature Importance](images/lasso_feature_importance.png) |
+
+Best model (OLS with LASSO-selected features, R² = 0.236) uses: `num_critic_for_reviews`, `is_english_film`, `genre_Drama`, `genre_Biography`, `director_count`, `is_colored`.
+
+### 4. Classification -- Predicting Break-Even
+
+Binary classification predicting whether a movie's gross exceeds its budget.
+
+#### Logistic Regression
+
+- 5-fold CV mean F1 score: 0.669
+- Test accuracy: 63%
+
+![Confusion Matrix - Logistic Regression](images/confusion_matrix_logistic_regression.png)
+
+#### Decision Tree (max_depth=4)
+
+The decision tree provides better performance at identifying profitable movies.
+
+![Decision Tree Visualization](images/decision_tree_visualization.png)
+
+![Confusion Matrix - Decision Tree](images/confusion_matrix_decision_tree.png)
+
+## Dependencies
+
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
+- statsmodels
