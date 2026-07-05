@@ -21,7 +21,11 @@ Distribution analysis of key variables and relationship mapping between budget a
 | ![Critic Reviews Distribution](images/critic_reviews_distribution.png) | ![Gross Profit Distribution](images/gross_profit_distribution.png) |
 | ![IMDb Score Distribution](images/imdb_score_distribution.png) | ![Movies Per Year](images/movies_per_year.png) |
 
-![Budget vs Gross Scatter](images/budget_vs_gross_scatter.png)
+Tableau Visualizations
+
+![Budget vs Gross](Tableau_viz/budget_vs_%20gross.png)
+
+![Director Success IMDb Net Profit](Tableau_viz/Director_Sucess_IMDb_Net_Profit.png)
 
 ### 2. Data Cleaning and Feature Engineering
 
